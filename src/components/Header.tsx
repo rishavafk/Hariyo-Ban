@@ -1,35 +1,40 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import {
+  Leaf,
+  Menu,
+  X,
+  Trophy,
+  Users,
+  MapPin,
+  Heart,
+  User,
+  LogOut,
+  BarChart3,
+  Shield,
+  Info
+} from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
-import { Leaf, Menu, X, Trophy, Users, MapPin, Heart, User, LogOut, BarChart3, Shield } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const { user, profile, signOut } = useAuth();
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path) => location.pathname === path;
 
-  const publicNavItems = [
+  const commonNavItems = [
     { path: '/donate', label: 'Donate Trees', icon: Heart },
     { path: '/contribution-rooms', label: 'Contribution Rooms', icon: Users },
     { path: '/map', label: 'Live Map', icon: MapPin },
     { path: '/leaderboard', label: 'Leaderboard', icon: Trophy },
-    { path: '/about', label: 'About Initiative', icon: Users },
-    { path: '/leadership', label: 'Leadership', icon: Users },
+    { path: '/about', label: 'About Rotary Roots', icon: Info },
   ];
 
-  const authNavItems = user ? [
-    { path: '/dashboard', label: 'Dashboard', icon: BarChart3 },
-    { path: '/donate', label: 'Donate Trees', icon: Heart },
-    { path: '/contribution-rooms', label: 'Contribution Rooms', icon: Users },
-    { path: '/map', label: 'Live Map', icon: MapPin },
-    { path: '/leaderboard', label: 'Leaderboard', icon: Trophy },
-    { path: '/about', label: 'About Initiative', icon: Users },
-    { path: '/leadership', label: 'Leadership', icon: Users },
-  ] : publicNavItems;
+  const authNavItems = user
+    ? [{ path: '/dashboard', label: 'Dashboard', icon: BarChart3 }, ...commonNavItems]
+    : commonNavItems;
 
-  // Add admin routes if user is admin
   if (user && (profile?.role === 'main_admin' || profile?.role === 'site_admin')) {
     authNavItems.push({ path: '/admin', label: 'Admin Panel', icon: Shield });
   }
@@ -57,11 +62,12 @@ const Header = () => {
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-gray-900">Hariyo Ban</span>
+              <span className="text-xl font-bold text-gray-900">Rotary Roots</span>
               <span className="text-xs text-green-600 font-medium">Rotary Club of Kasthamandap</span>
             </div>
           </Link>
-          
+
+          {/* Desktop Menu */}
           <nav className="hidden md:flex space-x-1">
             {authNavItems.map(({ path, label, icon: Icon }) => (
               <Link
@@ -79,6 +85,7 @@ const Header = () => {
             ))}
           </nav>
 
+          {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             {user ? (
               <div className="flex items-center space-x-4">
@@ -117,7 +124,8 @@ const Header = () => {
             )}
           </div>
 
-          <button 
+          {/* Mobile Menu Toggle */}
+          <button
             className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
@@ -125,6 +133,7 @@ const Header = () => {
           </button>
         </div>
 
+        {/* Mobile Menu Dropdown */}
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200">
             <nav className="flex flex-col space-y-1">
@@ -143,7 +152,8 @@ const Header = () => {
                   <span>{label}</span>
                 </Link>
               ))}
-              
+
+              {/* Mobile Auth Section */}
               <div className="border-t border-gray-200 pt-4 mt-4">
                 {user ? (
                   <>
