@@ -1,20 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
-  Leaf,
-  Menu,
-  X,
-  Trophy,
-  Users,
-  MapPin,
-  Heart,
-  User,
-  LogOut,
-  BarChart3,
-  Shield,
-  Info
+  Menu, X, Trophy, Users, MapPin, Heart, User,
+  LogOut, BarChart3, Shield, Info
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+import logo from './Gemini_Generated_Image_hh6injhh6injhh6i.png'; // ✅ Your logo path
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,22 +43,20 @@ const Header = () => {
     <header className="bg-white/95 backdrop-blur-sm sticky top-0 z-50 border-b border-green-100 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
+          {/* 🔗 Logo */}
           <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-            <div className="relative">
-              <div className="w-10 h-10 bg-gradient-to-br from-green-600 to-green-700 rounded-full flex items-center justify-center">
-                <Leaf className="h-6 w-6 text-white" />
-              </div>
-              <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-xs font-bold">R</span>
-              </div>
-            </div>
+            <img
+              src={logo}
+              alt="Rotary Roots Logo"
+              className="w-12 h-12 object-contain"
+            />
             <div className="flex flex-col">
               <span className="text-xl font-bold text-gray-900">Rotary Roots</span>
               <span className="text-xs text-green-600 font-medium">Rotary Club of Kasthamandap</span>
             </div>
           </Link>
 
-          {/* Desktop Menu */}
+          {/* 🔗 Desktop Nav */}
           <nav className="hidden md:flex space-x-1">
             {authNavItems.map(({ path, label, icon: Icon }) => (
               <Link
@@ -85,7 +74,7 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Auth Buttons */}
+          {/* 🔐 Auth Section */}
           <div className="hidden md:flex items-center space-x-4">
             {user ? (
               <div className="flex items-center space-x-4">
@@ -124,7 +113,7 @@ const Header = () => {
             )}
           </div>
 
-          {/* Mobile Menu Toggle */}
+          {/* 📱 Mobile Toggle */}
           <button
             className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -133,7 +122,7 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Mobile Menu Dropdown */}
+        {/* 📱 Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200">
             <nav className="flex flex-col space-y-1">
@@ -153,7 +142,7 @@ const Header = () => {
                 </Link>
               ))}
 
-              {/* Mobile Auth Section */}
+              {/* Mobile auth */}
               <div className="border-t border-gray-200 pt-4 mt-4">
                 {user ? (
                   <>
