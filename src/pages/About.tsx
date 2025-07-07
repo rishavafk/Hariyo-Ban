@@ -1,5 +1,16 @@
 import React from 'react';
-import { Users, Heart, TreePine, Target, Award, Globe, Shield, Handshake, Building2, CheckCircle } from 'lucide-react';
+import {
+  Users,
+  Heart,
+  TreePine,
+  Target,
+  Award,
+  Globe,
+  Shield,
+  Handshake,
+  Building2,
+  CheckCircle
+} from 'lucide-react';
 
 const About = () => {
   const rotaryValues = [
@@ -11,7 +22,7 @@ const About = () => {
     {
       icon: Globe,
       title: 'Global Impact',
-      description: 'Part of Rotary International\'s worldwide network of environmental conservation initiatives.'
+      description: "Part of Rotary International's worldwide network of environmental conservation initiatives."
     },
     {
       icon: Shield,
@@ -69,12 +80,12 @@ const About = () => {
             </div>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            About <span className="text-green-600">GreenNepal</span>
+            About <span className="text-green-600">Rotary Roots</span>
           </h1>
           <div className="bg-green-50 border border-green-200 rounded-xl p-6 max-w-4xl mx-auto mb-8">
             <p className="text-xl text-green-800 font-semibold mb-2">A Rotary Club of Kasthamandap Initiative</p>
             <p className="text-green-700 leading-relaxed">
-              GreenNepal is proudly powered by the Rotary Club of Kasthamandap, bringing together our commitment to 
+              Rotary Roots is proudly powered by the Rotary Club of Kasthamandap, bringing together our commitment to 
               environmental stewardship with Rotary's global mission of service above self. Together, we're 
               creating a sustainable future for Nepal through community-driven reforestation.
             </p>
@@ -177,7 +188,7 @@ const About = () => {
           </div>
           <h2 className="text-3xl font-bold mb-6">Rotary Club of Kasthamandap Partnership</h2>
           <p className="text-xl text-green-100 max-w-4xl mx-auto leading-relaxed mb-8">
-            As a proud initiative of the Rotary Club of Kasthamandap, GreenNepal leverages Rotary's century-long commitment 
+            As a proud initiative of the Rotary Club of Kasthamandap, Rotary Roots leverages Rotary's century-long commitment 
             to community service and environmental stewardship. Our partnership ensures transparency, accountability, 
             and sustainable impact in every tree planted.
           </p>
